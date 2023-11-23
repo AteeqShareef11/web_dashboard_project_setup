@@ -1,0 +1,47 @@
+/* scrollbar */
+@import 'simplebar-react/dist/simplebar.min.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;500;700;900&display=swap');
+
+.global-width{
+    width: 80%;
+  max-width: 1550px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.formImg{
+    background-image: url(./client//assets/formimg.png);
+    padding: 2rem 0rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35rem;
+    width: 20rem;
+}
+.demo2{
+    background-image:  url(./client/assets/demo2bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+@media screen and (max-width: 550px){
+    .global-width{
+    width: 95%;
+      max-width: 1550px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    
+
+@media screen and (max-width: 425px) {
+    .formImg{
+        height: 28rem;
+    width: 16rem;
+    }
+}
+}
