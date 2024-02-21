@@ -1,0 +1,43 @@
+.cusSwtich input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+.cusSwtich{
+    display: flex;
+}
+.cusSwtich label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 60px;
+    height: 35px;
+    background: #d7e0ea;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+.cusSwtich label:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 25px;
+	height: 25px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.cusSwtich input:checked + label {
+	background: #007bff;
+}
+
+.cusSwtich input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.cusSwtich label:active:after {
+	width: 130px;
+}
