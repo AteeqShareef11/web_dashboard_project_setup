@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-const useStoreData = (selectorFunction, getFunction, refetch) => {
+const useStoreData = (selectorFunction, getFunction, refetch, data, dynamicDeps) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
@@ -11,7 +12,7 @@ const useStoreData = (selectorFunction, getFunction, refetch) => {
         setLoading(true);
 
         if (typeof getFunction === 'function') {
-          await dispatch(getFunction());
+          await dispatch(getFunction(data));
         } else {
           console.error('getFunction should be a function.');
         }
@@ -21,12 +22,9 @@ const useStoreData = (selectorFunction, getFunction, refetch) => {
     };
 
     fetchData();
-  }, [dispatch, getFunction, refetch]);
+  }, [dispatch, getFunction, refetch, ...(dynamicDeps || [])]);
 
   return { data: useSelector(selectorFunction), loading };
 };
 
 export default useStoreData;
-
-//usage of this hook
-// const { data, loading } = useStoreData((s) => s.patients?.data?.patients || [], getAllPatients, refetch);

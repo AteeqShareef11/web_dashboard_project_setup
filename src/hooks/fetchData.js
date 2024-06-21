@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 
 const useFetchData = (fetchFunction, id, refetch) => {
@@ -10,11 +9,10 @@ const useFetchData = (fetchFunction, id, refetch) => {
       try {
         setLoading(true);
         const res = await fetchFunction(id);
-        console.log('res', res);
         const fetchedData = res?.data?.data;
         setData(fetchedData || {});
       } catch (err) {
-        toast.error(err?.response?.data?.message || err?.message);
+        // toast.error(err?.response?.data?.message || err?.message);
       } finally {
         setLoading(false);
       }
@@ -30,9 +28,3 @@ const useFetchData = (fetchFunction, id, refetch) => {
 };
 
 export default useFetchData;
-
-//usage
-//  const { data, loading } = useFetchData(
-//     chamberServices.getChamberById,
-//     id,
-//   );

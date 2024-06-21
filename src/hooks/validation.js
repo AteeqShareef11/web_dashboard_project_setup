@@ -18,13 +18,12 @@ const useForm = (initialValues, validationRules) => {
   const handleOnChange = (e, nameField) => {
     let value;
     let name = nameField;
-    if (e.target) {
+    if (e?.target) {
       value = e.target.value;
       name = e.target.name;
     } else {
       value = e;
     }
-    console.log(name);
 
     setValues((prevValues) => ({
       ...prevValues,
@@ -69,31 +68,3 @@ const useForm = (initialValues, validationRules) => {
 };
 
 export default useForm;
-
-//usage
-// const { values, errors, handleOnChange, validateAllFields, setFormValues } = useForm(
-//   initialValues,
-//   validationRules
-// );
-
-// const initialValues = {
-//   name: '',
-//   title: '',
-//   appointment_limit: '',
-//   address: '',
-// };
-// const validationRules = {
-//   name: (value) => (value ? '' : 'This field is required'),
-//   title: (value) => (value ? '' : 'This field is required'),
-//   appointment_limit: (value) => (value ? '' : 'This field is required'),
-//   address: (value) => (value ? '' : 'This field is required'),
-// };
-
-// <CustomTextField
-//   onChange={handleOnChange}
-//   name="name"
-//   value={values?.name}
-//   helperText={errors?.name}
-//   error={errors?.name}
-//   inputLabel="Name"
-// />;
